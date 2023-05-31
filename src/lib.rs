@@ -365,6 +365,8 @@ use riscv::register::{scause as xcause, stvec as xtvec, stvec::TrapMode as xTrap
 #[cfg(not(feature = "s-mode"))]
 use riscv::register::{mcause as xcause, mhartid, mtvec as xtvec, mtvec::TrapMode as xTrapMode};
 
+use core::ptr;
+
 pub use riscv_rt_macros::{entry, pre_init};
 
 #[export_name = "error: riscv-rt appears more than once in the dependency graph"]
