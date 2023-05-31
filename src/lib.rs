@@ -414,9 +414,11 @@ pub unsafe extern "C" fn start_rust(a0: usize, a1: usize, a2: usize) -> ! {
 
     if _mp_hook(hartid) {
         __pre_init();
-        while &_sdata == &_sidata {}
-        //r0::zero_bss(&mut _sbss, &mut _ebss);
-        //r0::init_data(&mut _sdata, &mut _edata, &_sidata);
+        
+        r0::zero_bss(&mut _sbss, &mut _ebss);
+        if &_sdata != &_sidata {
+            r0::init_data(&mut _sdata, &mut _edata, &_sidata);
+        }
     }
 
     // TODO: Enable FPU when available
