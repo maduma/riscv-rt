@@ -412,7 +412,7 @@ pub unsafe extern "C" fn start_rust(a0: usize, a1: usize, a2: usize) -> ! {
 
     if _mp_hook(hartid) {
         __pre_init();
-        //if prt::eq(&_sbss, &_sidata) {}
+        if prt::eq(&_sbss, &_sidata) {}
         //r0::zero_bss(&mut _sbss, &mut _ebss);
         //r0::init_data(&mut _sdata, &mut _edata, &_sidata);
     }
